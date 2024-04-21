@@ -728,6 +728,13 @@ def lvis_classes() -> list:
         'yoke_(animal_equipment)', 'zebra', 'zucchini'
     ]
 
+def lars_classes() -> list:
+    """Class names of LaRS Dataset."""
+    return [
+        'Static Obstacle', 'Water', 'Sky', 'Boat/ship', 'Row boats', 
+        'Paddle board', 'Buoy', 'Swimmer', 'Animal', 'Float', 'Other'
+    ]
+
 
 dataset_aliases = {
     'voc': ['voc', 'pascal_voc', 'voc07', 'voc12'],
@@ -742,6 +749,7 @@ dataset_aliases = {
     'objects365v1': ['objects365v1', 'obj365v1'],
     'objects365v2': ['objects365v2', 'obj365v2'],
     'lvis': ['lvis', 'lvis_v1'],
+    'lars' :['lars', 'lars_v1'],
 }
 
 

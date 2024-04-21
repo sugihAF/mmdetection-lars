@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/mask-rcnn_r50_fpn.py',
-    '../_base_/datasets/coco_panoptic.py',
+    '../_base_/datasets/lars_panoptic.py',
     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
 ]
 
@@ -18,8 +18,8 @@ model = dict(
         seg_pad_value=255),
     semantic_head=dict(
         type='PanopticFPNHead',
-        num_things_classes=80,
-        num_stuff_classes=53,
+        num_things_classes=8, # 80 classes for COCO
+        num_stuff_classes=3, # 53 classes for COCO
         in_channels=256,
         inner_channels=128,
         start_level=0,
@@ -30,8 +30,8 @@ model = dict(
             type='CrossEntropyLoss', ignore_index=255, loss_weight=0.5)),
     panoptic_fusion_head=dict(
         type='HeuristicFusionHead',
-        num_things_classes=80,
-        num_stuff_classes=53),
+        num_things_classes=8, # 80 classes for COCO
+        num_stuff_classes=3), # 53 classes for COCO
     test_cfg=dict(
         rcnn=dict(
             score_thr=0.6,
